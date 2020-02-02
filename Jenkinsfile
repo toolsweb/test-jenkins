@@ -6,11 +6,11 @@ node {
     stage('Environment') {
       sh 'git --version'
       echo "Branch: ${env.BRANCH_NAME}"
-      sh 'sudo docker -v'
+      sh 'docker -v'
       sh 'printenv'
     }
     stage('Build Docker test'){
-      sh 'sudo docker build -t react-test -f Dockerfile.test --no-cache . '
+      sh 'docker build -t react-test -f Dockerfile.test --no-cache . '
     }
     stage('Docker test'){
       sh 'docker run --rm react-test'
